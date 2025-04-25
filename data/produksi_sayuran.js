@@ -1,22 +1,6 @@
 const produksiData = [
   {
     tahun: 2023,
-    provinsi: 'nan',
-    komoditas: [
-      'Bawang Merah',   'Bawang Putih', 'Bawang Daun', 'Kentang',
-      'Kubis',          'Kembang Kol',  'Petsai/Sawi', 'Wortel',
-      'Kacang Panjang', 'Cabai Besar',  'Cabai Rawit', 'Tomat',
-      'Terung',         'Buncis',       'Ketimun',     'Labu Siam',
-      'Kangkung',       'Bayam',        'Melinjo',     'Paprika',
-      'Jamur',          'Petai',        'Jengkol'
-    ],
-    produksi: [
-      2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023,
-      2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023
-    ]
-  },
-  {
-    tahun: 2023,
     provinsi: 'ACEH',
     komoditas: [
       'Bawang Merah',   'Bawang Putih', 'Bawang Daun', 'Kentang',

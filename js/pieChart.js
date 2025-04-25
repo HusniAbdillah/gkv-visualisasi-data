@@ -1,20 +1,17 @@
 console.log('produksiData:', produksiData);
 const pieTargetYear = 2023;  // Tahun yang ingin divisualisasikan
-const pieTargetProvinsi = [
-  'SUMATERA UTARA', 'JAWA BARAT', 'JAWA TENGAH', 'SULAWESI SELATAN',
-  'NUSA TENGGARA BARAT', 'INDONESIA'
-];
-console.log('Nasional Data:', nasionalData);
-console.log('Provinsi Data:', provinsiData);
+
 // Fungsi untuk membuat Pie Chart
 function renderPieChart(selectedProvince) {
   let dataKomoditas = [];
   let totalProduksi = 0;
-console.log('Selected Province:', selectedProvince);
+
+  console.log('Selected Province:', selectedProvince);
+
   if (selectedProvince === 'national') {
     // Ambil data nasional
     const nasionalData = produksiData.find(
-        d => d.tahun === pieTargetYear && d.provinsi === 'INDONESIA');
+        (d) => d.tahun === pieTargetYear && d.provinsi === 'INDONESIA');
 
     // Pastikan data nasional ditemukan
     if (nasionalData) {
@@ -40,10 +37,10 @@ console.log('Selected Province:', selectedProvince);
       console.error('Data nasional untuk tahun ini tidak ditemukan.');
       return;
     }
-  } else if (pieTargetProvinsi.includes(selectedProvince)) {
+  } else {
     // Ambil data untuk provinsi yang dipilih
     const provinsiData = produksiData.find(
-        d => d.tahun === pieTargetYear && d.provinsi === selectedProvince);
+        (d) => d.tahun === pieTargetYear && d.provinsi === selectedProvince);
 
     // Pastikan data provinsi ditemukan
     if (provinsiData) {
@@ -69,23 +66,25 @@ console.log('Selected Province:', selectedProvince);
       console.error(`Data untuk provinsi ${selectedProvince} tidak ditemukan.`);
       return;
     }
-  } else {
-    console.error('Provinsi yang dipilih tidak valid.');
-    return;
   }
 
   // Buat Pie Chart menggunakan Plotly
   Plotly.newPlot(
-      'pie-chart', [{
-        labels: dataKomoditas.map(d => `${d.komoditas} (${d.persentase}%)`),
-        values: dataKomoditas.map(d => d.produksi),
-        type: 'pie'
-      }],
+      'pie-chart',
+      [
+        {
+          labels: dataKomoditas.map((d) => `${d.komoditas} (${d.persentase}%)`),
+          values: dataKomoditas.map((d) => d.produksi),
+          type: 'pie',
+          textinfo: 'label+percent',
+          hoverinfo: 'label+value+percent',
+        },
+      ],
       {
         title: `Proporsi Produksi Sayuran ${
             selectedProvince === 'national' ?
                 'Nasional' :
-                selectedProvince} (${pieTargetYear})`
+                selectedProvince} (${pieTargetYear})`,
       });
 
   // Tampilkan data di konsol untuk referensi

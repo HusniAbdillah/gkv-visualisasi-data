@@ -15,12 +15,13 @@
         <label for="chart-type">Pilih Jenis Diagram:</label>
         <select id="chart-type" onchange="updateChart()">
           <option value="bar">Bar Chart</option>
-          <option value="line">Line Chart</option>
+          <option value="line" selected>Line Chart</option>
+          <!-- Set default ke Line Chart -->
           <option value="pie">Pie Chart</option>
         </select>
       </div>
 
-      <div id="line-selector" class="line-selector" style="display: none">
+      <div id="line-selector" class="line-selector" style="display: block">
         <label for="vegetable-type">Pilih Sayuran:</label>
         <select id="vegetable-type" onchange="updateLineChart()">
           <option value="cabe_rawit">Cabe Rawit</option>
@@ -33,11 +34,40 @@
         <label for="province-select">Pilih Provinsi:</label>
         <select id="province-select" onchange="updatePieChart()">
           <option value="national">Nasional</option>
+          <option value="ACEH">Aceh</option>
           <option value="SUMATERA UTARA">Sumatera Utara</option>
+          <option value="SUMATERA BARAT">Sumatera Barat</option>
+          <option value="RIAU">Riau</option>
+          <option value="JAMBI">Jambi</option>
+          <option value="SUMATERA SELATAN">Sumatera Selatan</option>
+          <option value="BENGKULU">Bengkulu</option>
+          <option value="LAMPUNG">Lampung</option>
+          <option value="KEP. BANGKA BELITUNG">Kep. Bangka Belitung</option>
+          <option value="KEP. RIAU">Kep. Riau</option>
+          <option value="DKI JAKARTA">DKI Jakarta</option>
           <option value="JAWA BARAT">Jawa Barat</option>
           <option value="JAWA TENGAH">Jawa Tengah</option>
-          <option value="SULAWESI SELATAN">Sulawesi Selatan</option>
+          <option value="DI YOGYAKARTA">DI Yogyakarta</option>
+          <option value="JAWA TIMUR">Jawa Timur</option>
+          <option value="BANTEN">Banten</option>
+          <option value="BALI">Bali</option>
           <option value="NUSA TENGGARA BARAT">Nusa Tenggara Barat</option>
+          <option value="NUSA TENGGARA TIMUR">Nusa Tenggara Timur</option>
+          <option value="KALIMANTAN BARAT">Kalimantan Barat</option>
+          <option value="KALIMANTAN TENGAH">Kalimantan Tengah</option>
+          <option value="KALIMANTAN SELATAN">Kalimantan Selatan</option>
+          <option value="KALIMANTAN TIMUR">Kalimantan Timur</option>
+          <option value="KALIMANTAN UTARA">Kalimantan Utara</option>
+          <option value="SULAWESI UTARA">Sulawesi Utara</option>
+          <option value="SULAWESI TENGAH">Sulawesi Tengah</option>
+          <option value="SULAWESI SELATAN">Sulawesi Selatan</option>
+          <option value="SULAWESI TENGGARA">Sulawesi Tenggara</option>
+          <option value="GORONTALO">Gorontalo</option>
+          <option value="SULAWESI BARAT">Sulawesi Barat</option>
+          <option value="MALUKU">Maluku</option>
+          <option value="MALUKU UTARA">Maluku Utara</option>
+          <option value="PAPUA BARAT">Papua Barat</option>
+          <option value="PAPUA">Papua</option>
         </select>
       </div>
 
@@ -45,16 +75,16 @@
         <div
           id="bar-chart"
           class="chart"
-          style="width: 100%; height: 400px"
+          style="width: 100%; height: 400px; display: none"
         ></div>
-        <div id="line-chart" class="chart" style="display: none">
+        <div id="line-chart" class="chart" style="width: 100%; height: 400px">
           <div
             id="linechart-bawang-merah"
-            style="width: 100%; height: 400px"
+            style="width: 100%; height: 400px; display: none"
           ></div>
           <div
             id="linechart-cabe-rawit"
-            style="display: none; width: 100%; height: 400px"
+            style="width: 100%; height: 400px"
           ></div>
         </div>
         <div
@@ -66,7 +96,6 @@
     </div>
 
     <script src="data/produksi_sayuran.js"></script>
-    console.log('produksiData:', produksiData);
     <script src="js/barchart.js"></script>
     <script src="js/pieChart.js"></script>
     <script src="js/lineChart.js"></script>
@@ -94,7 +123,7 @@
           updateBarChart();
         }
       }
-      console.log("Chart type:", chartType);
+
       // Fungsi untuk memperbarui Line Chart berdasarkan pilihan sayuran
       function updateLineChart() {
         const vegetableType = document.getElementById("vegetable-type").value;
@@ -132,14 +161,38 @@
           config
         );
       }
-      console.log("Pie data:", pieData);
-      console.log("Line data:", lineData);
-      
       function updatePieChart() {
         const selectedProvince =
           document.getElementById("province-select").value;
         renderPieChart(selectedProvince);
       }
+      function populateProvinceDropdown() {
+        const provinceSelect = document.getElementById("province-select");
+        provinceSelect.innerHTML = '<option value="national">Nasional</option>'; // Tambahkan opsi nasional
+
+        // Ambil semua provinsi unik dari produksiData
+        const provinces = [...new Set(produksiData.map((d) => d.provinsi))];
+
+        // Tambahkan setiap provinsi ke dropdown
+        provinces.forEach((provinsi) => {
+          const option = document.createElement("option");
+          option.value = provinsi;
+          option.textContent = provinsi;
+          provinceSelect.appendChild(option);
+        });
+      }
+      // Panggil fungsi saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", () => {
+        // Set line chart sebagai default
+        document.getElementById("chart-type").value = "line";
+        document.getElementById("line-selector").style.display = "block";
+        document.getElementById("line-chart").style.display = "block";
+        document.getElementById("bar-chart").style.display = "none";
+        document.getElementById("pie-chart").style.display = "none";
+
+        // Panggil fungsi untuk memperbarui line chart
+        updateLineChart();
+      });
     </script>
   </body>
 </html>

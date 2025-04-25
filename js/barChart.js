@@ -1,7 +1,7 @@
 const barTargetYear = 2023;
-const topKomoditas = ['Cabai Rawit', 'Cabai Besar', 'Tomat'];
+const topKomoditas = ['Bawang Merah', 'Bawang Putih', 'Tomat'];
 const targetProvinsi = [
-  'JAWA TENGAH', 'JAWA TIMUR', 'JAWA BARAT', 'SUMATERA UTARA', 'SUMATERA BARAT'
+  'ACEH', 'JAWA TIMUR', 'JAWA BARAT', 'SUMATERA UTARA', 'SUMATERA BARAT'
 ];
 
 // Filter data hanya untuk tahun dan komoditas serta provinsi yang relevan

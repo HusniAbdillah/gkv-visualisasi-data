@@ -1,117 +1,183 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Visualisasi Produksi Sayuran</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>Visualisasi Produksi Sayuran di Indonesia</h1>
-    
-    <div class="chart-selector">
-      <label for="chart-type">Pilih Jenis Diagram:</label>
-      <select id="chart-type" onchange="updateChart()">
-        <option value="bar">Bar Chart</option>
-        <option value="line">Line Chart</option>
-        <option value="pie">Pie Chart</option>
-      </select>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualisasi Produksi Sayuran per Provinsi di Indonesia</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Visualisasi Produksi Sayuran per Provinsi di Indonesia</h1>
 
-    <div id="line-selector" class="line-selector" style="display: none;">
-      <label for="vegetable-type">Pilih Sayuran:</label>
-      <select id="vegetable-type" onchange="updateLineChart()">
-        <option value="cabe_rawit">Cabe Rawit</option>
-        <option value="bawang_merah">Bawang Merah</option>
-      </select>
-      <h2 id="line-chart-title" style="display: none;"></h2> <!-- Judul untuk Line Chart -->
-    </div>
-
-    <div id="pie-selector" class="pie-selector" style="display: none;">
-      <label for="province-select">Pilih Provinsi:</label>
-      <select id="province-select" onchange="updatePieChart()">
-        <option value="national">Nasional</option>
-        <option value="SUMATERA UTARA">SUMATERA UTARA</option>
-        <option value="JAWA BARAT">JAWA BARAT</option>
-        <option value="JAWA TENGAH">JAWA TENGAH</option>
-        <option value="SULAWESI SELATAN">SULAWESI SELATAN</option>
-        <option value="NUSA TENGGARA BARAT">NUSA TENGGARA BARAT</option>
-      </select>
-    </div>
-
-    <div id="chart-container">
-      <div id="bar-chart" class="chart" style="width: 100%; height: 400px;"></div>
-      <div id="line-chart" class="chart" style="display: none;">
-        <div id="linechart-bawang-merah" style="width: 100%; height: 400px;"></div>
-        <div id="linechart-cabe-rawit" style="display: none; width: 100%; height: 400px;"></div>
+      <div class="chart-selector">
+        <label for="chart-type">Pilih Jenis Diagram:</label>
+        <select id="chart-type" onchange="updateChart()">
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
       </div>
-      <div id="pie-chart" class="chart" style="display: none; width: 100%; height: 400px;"></div>
+
+      <div id="line-selector" class="line-selector" style="display: none">
+        <label for="vegetable-type">Pilih Sayuran:</label>
+        <select id="vegetable-type" onchange="updateLineChart()">
+          <option value="cabe_rawit">Cabe Rawit</option>
+          <option value="bawang_merah">Bawang Merah</option>
+        </select>
+        <h2 id="line-chart-title" style="display: none"></h2>
+      </div>
+
+      <div id="pie-selector" class="pie-selector" style="display: none">
+        <label for="province-select">Pilih Provinsi:</label>
+        <select id="province-select" onchange="updatePieChart()">
+          <option value="NASIONAL">Nasional</option>
+          <option value="SUMATERA UTARA">Sumatera Utara</option>
+          <option value="JAWA BARAT">Jawa Barat</option>
+          <option value="JAWA TENGAH">Jawa Tengah</option>
+          <option value="SULAWESI SELATAN">Sulawesi Selatan</option>
+          <option value="NUSA TENGGARA BARAT">Nusa Tenggara Barat</option>
+        </select>
+      </div>
+
+      <div id="chart-container">
+        <div
+          id="bar-chart"
+          class="chart"
+          style="width: 100%; height: 400px"
+        ></div>
+        <div id="line-chart" class="chart" style="display: none">
+          <div
+            id="linechart-bawang-merah"
+            style="width: 100%; height: 400px"
+          ></div>
+          <div
+            id="linechart-cabe-rawit"
+            style="display: none; width: 100%; height: 400px"
+          ></div>
+        </div>
+        <div
+          id="pie-chart"
+          class="chart"
+          style="display: none; width: 100%; height: 400px"
+        ></div>
+      </div>
     </div>
-  </div>
 
-  <script src="data/produksi_sayuran.js"></script> 
-  <script src="js/barchart.js"></script>
-  <script src="js/pieChart.js"></script> 
-  <script src="js/lineChart.js"></script>
-  <script>
-    // Fungsi untuk memperbarui chart berdasarkan pilihan pengguna
-    function updateChart() {
-      const chartType = document.getElementById("chart-type").value;
-      document.getElementById("bar-chart").style.display = chartType === "bar" ? "block" : "none";
-      document.getElementById("line-chart").style.display = chartType === "line" ? "block" : "none";
-      document.getElementById("pie-chart").style.display = chartType === "pie" ? "block" : "none";
-      
-      // Menampilkan dropdown yang sesuai
-      document.getElementById("line-selector").style.display = chartType === "line" ? "block" : "none";
-      document.getElementById("pie-selector").style.display = chartType === "pie" ? "block" : "none";
-      
-      // Jika pie chart dipilih, panggil fungsi untuk memperbarui pie chart
-      if (chartType === "pie") {
-        updatePieChart(); // Memanggil fungsi untuk memperbarui pie chart
+    <script src="data/produksi_sayuran.js"></script>
+    console.log('produksiData:', produksiData);
+    <script src="js/barchart.js"></script>
+    <script src="js/pieChart.js"></script>
+    <script src="js/lineChart.js"></script>
+    <script>
+      // Fungsi untuk memperbarui chart berdasarkan pilihan pengguna
+      function updateChart() {
+        const chartType = document.getElementById("chart-type").value;
+        document.getElementById("bar-chart").style.display =
+          chartType === "bar" ? "block" : "none";
+        document.getElementById("line-chart").style.display =
+          chartType === "line" ? "block" : "none";
+        document.getElementById("pie-chart").style.display =
+          chartType === "pie" ? "block" : "none";
+
+        document.getElementById("line-selector").style.display =
+          chartType === "line" ? "block" : "none";
+        document.getElementById("pie-selector").style.display =
+          chartType === "pie" ? "block" : "none";
+
+        if (chartType === "pie") {
+          updatePieChart();
+        } else if (chartType === "line") {
+          updateLineChart();
+        } else {
+          updateBarChart();
+        }
       }
-    }
+      console.log("Chart type:", chartType);
+          // Fungsi untuk memperbarui Line Chart berdasarkan pilihan sayuran
+      function updateLineChart() {
+        const vegetableType = document.getElementById("vegetable-type").value;
+        let lineData, title;
 
-    // Fungsi untuk memperbarui Pie Chart berdasarkan pilihan provinsi
-    function updatePieChart() {
-      const selectedProvince = document.getElementById("province-select").value;
-      const pieData = [];
+        if (vegetableType === "cabe_rawit") {
+          lineData = dataCabeRawit;
+          title =
+            "Tren Produksi Cabe Rawit per Provinsi di Indonesia (2019–2023)";
+          document.getElementById("linechart-cabe-rawit").style.display =
+            "block";
+          document.getElementById("linechart-bawang-merah").style.display =
+            "none";
+        } else if (vegetableType === "bawang_merah") {
+          lineData = dataBawangMerah;
+          title =
+            "Tren Produksi Bawang Merah per Provinsi di Indonesia (2019–2023)";
+          document.getElementById("linechart-bawang-merah").style.display =
+            "block";
+          document.getElementById("linechart-cabe-rawit").style.display =
+            "none";
+        }
 
-      if (selectedProvince === "national") {
-        // Jika nasional dipilih, panggil fungsi dari pieChart.js
-        const totalNasional = produksiData
-          .filter(d => d.tahun === 2023)
-          .reduce((sum, d) => sum + d.produksi, 0);
-        
-        pieData.push({
-          label: "Nasional",
-          value: totalNasional
-        });
-      } else {
-        // Jika provinsi dipilih, ambil data untuk provinsi tersebut
-        const totalProvinsi = produksiData
-          .filter(d => d.provinsi === selectedProvince && d.tahun === 2023)
-          .reduce((sum, d) => sum + d.produksi, 0);
-        
-        pieData.push({
-          label: selectedProvince,
-          value: totalProvinsi
+        // Menampilkan judul
+        document.getElementById("line-chart-title").innerText = title;
+        document.getElementById("line-chart-title").style.display = "block";
+
+        // Render Line Chart
+        Plotly.newPlot(
+          vegetableType === "cabe_rawit"
+            ? "linechart-cabe-rawit"
+            : "linechart-bawang-merah",
+          lineData,
+          vegetableType === "cabe_rawit" ? layoutCabeRawit : layoutBawangMerah,
+          config
+        );
+      }
+      console.log("Pie data:", pieData);
+      console.log("Line data:", lineData);
+      // Fungsi untuk memperbarui Pie Chart berdasarkan pilihan provinsi
+      function updatePieChart() {
+        const selectedProvince =
+          document.getElementById("province-select").value;
+        const pieData = [];
+
+        if (selectedProvince === "national") {
+          // Jika nasional dipilih, panggil fungsi dari pieChart.js
+          const totalNasional = produksiData
+            .filter((d) => d.tahun === 2023)
+            .reduce((sum, d) => sum + d.produksi, 0);
+
+          pieData.push({
+            label: "Nasional",
+            value: totalNasional,
+          });
+        } else {
+          // Jika provinsi dipilih, ambil data untuk provinsi tersebut
+          const totalProvinsi = produksiData
+            .filter((d) => d.provinsi === selectedProvince && d.tahun === 2023)
+            .reduce((sum, d) => sum + d.produksi, 0);
+
+          pieData.push({
+            label: selectedProvince,
+            value: totalProvinsi,
+          });
+        }
+
+        // Render Pie Chart
+        const pieChartData = [
+          {
+            values: pieData.map((d) => d.value),
+            labels: pieData.map((d) => d.label),
+            type: "pie",
+          },
+        ];
+
+        Plotly.newPlot("pie-chart", pieChartData, {
+          title: `Distribusi Produksi Sayuran di ${
+            selectedProvince === "national" ? "Nasional" : selectedProvince
+          } (2023)`,
+          showlegend: true,
         });
       }
-
-      // Render Pie Chart
-      const pieChartData = [{
-        values: pieData.map(d => d.value),
-        labels: pieData.map(d => d.label),
-        type: 'pie'
-      }];
-
-      Plotly.newPlot('pie-chart', pieChartData, {
-        title: `Distribusi Produksi Sayuran di ${selectedProvince === "national" ? "Nasional" : selectedProvince} (2023)`,
-        showlegend: true
-      });
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>

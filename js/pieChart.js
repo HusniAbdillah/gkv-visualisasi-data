@@ -1,4 +1,4 @@
-const pieTargetYear = 2023;  // Tahun yang ingin divisualisasikan
+const pieTargetYear = 2023; // Tahun yang ingin divisualisasikan
 const pieTargetProvinsi = ['SUMATERA UTARA', 'JAWA BARAT', 'JAWA TENGAH', 'SULAWESI SELATAN', 'NUSA TENGGARA BARAT'];
 
 // Fungsi untuk membuat Pie Chart
@@ -22,27 +22,39 @@ function renderPieChart(selectedProvince) {
       // Buat data dengan nama komoditas, produksi, dan persentase
       dataKomoditas = komoditas.map((komoditas, index) => {
         const nilaiProduksi = produksi[index];
-        const persentase = ((nilaiProduksi / totalProduksi) * 100).toFixed(2);  // Format ke 2 desimal
+        const persentase = ((nilaiProduksi / totalProduksi) * 100).toFixed(2); // Format ke 2 desimal
         return { komoditas, produksi: nilaiProduksi, persentase };
       });
     } else {
       console.error('Data nasional untuk tahun ini tidak ditemukan.');
       return;
     }
-  } else {
+  } else if (pieTargetProvinsi.includes(selectedProvince)) {
     // Ambil data untuk provinsi yang dipilih
-    const provinsiData = produksiData.filter(
+    const provinsiData = produksiData.find(
       d => d.tahun === pieTargetYear && d.provinsi === selectedProvince
     );
 
-    // Hitung total produksi untuk provinsi yang dipilih
-    totalProduksi = provinsiData.reduce((sum, d) => sum + d.produksi, 0);
+    // Pastikan data provinsi ditemukan
+    if (provinsiData) {
+      const { komoditas, produksi } = provinsiData;
 
-    // Buat data dengan nama komoditas, produksi, dan persentase
-    dataKomoditas = provinsiData.map(d => {
-      const persentase = ((d.produksi / totalProduksi) * 100).toFixed(2);  // Format ke 2 desimal
-      return { komoditas: d.komoditas, produksi: d.produksi, persentase };
-    });
+      // Hitung total produksi
+      totalProduksi = produksi.reduce((sum, value) => sum + value, 0);
+
+      // Buat data dengan nama komoditas, produksi, dan persentase
+      dataKomoditas = komoditas.map((komoditas, index) => {
+        const nilaiProduksi = produksi[index];
+        const persentase = ((nilaiProduksi / totalProduksi) * 100).toFixed(2); // Format ke 2 desimal
+        return { komoditas, produksi: nilaiProduksi, persentase };
+      });
+    } else {
+      console.error(`Data untuk provinsi ${selectedProvince} tidak ditemukan.`);
+      return;
+    }
+  } else {
+    console.error('Provinsi yang dipilih tidak valid.');
+    return;
   }
 
   // Buat Pie Chart menggunakan Plotly

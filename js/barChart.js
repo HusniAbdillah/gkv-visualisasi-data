@@ -1,7 +1,7 @@
 function updateBarChart() {
     const targetYear = 2023; // Tahun yang ditargetkan
-    const targetKomoditas = ['Bawang Merah', 'Petai', 'Tomat']; // 3 jenis sayuran
-    const targetProvinsi = ['JAWA TIMUR', 'JAWA TIMUR', 'JAWA BARAT', 'SUMATERA UTARA', 'SUMATERA BARAT']; // 5 provinsi
+    const targetKomoditas = ['Bawang Merah', 'Cabai Rawit', 'Tomat']; // 3 jenis sayuran
+    const targetProvinsi = ['JAWA BARAT', 'JAWA TENGAH', 'JAWA TIMUR', 'SUMATERA UTARA', 'SUMATERA BARAT']; // 5 provinsi
   
     // Filter data hanya untuk tahun, komoditas, dan provinsi yang relevan
     const filteredData = produksiData.filter(

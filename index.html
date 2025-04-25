@@ -95,7 +95,7 @@
         }
       }
       console.log("Chart type:", chartType);
-          // Fungsi untuk memperbarui Line Chart berdasarkan pilihan sayuran
+      // Fungsi untuk memperbarui Line Chart berdasarkan pilihan sayuran
       function updateLineChart() {
         const vegetableType = document.getElementById("vegetable-type").value;
         let lineData, title;
@@ -134,49 +134,11 @@
       }
       console.log("Pie data:", pieData);
       console.log("Line data:", lineData);
-      // Fungsi untuk memperbarui Pie Chart berdasarkan pilihan provinsi
+      
       function updatePieChart() {
         const selectedProvince =
           document.getElementById("province-select").value;
-        const pieData = [];
-
-        if (selectedProvince === "national") {
-          // Jika nasional dipilih, panggil fungsi dari pieChart.js
-          const totalNasional = produksiData
-            .filter((d) => d.tahun === 2023)
-            .reduce((sum, d) => sum + d.produksi, 0);
-
-          pieData.push({
-            label: "Nasional",
-            value: totalNasional,
-          });
-        } else {
-          // Jika provinsi dipilih, ambil data untuk provinsi tersebut
-          const totalProvinsi = produksiData
-            .filter((d) => d.provinsi === selectedProvince && d.tahun === 2023)
-            .reduce((sum, d) => sum + d.produksi, 0);
-
-          pieData.push({
-            label: selectedProvince,
-            value: totalProvinsi,
-          });
-        }
-
-        // Render Pie Chart
-        const pieChartData = [
-          {
-            values: pieData.map((d) => d.value),
-            labels: pieData.map((d) => d.label),
-            type: "pie",
-          },
-        ];
-
-        Plotly.newPlot("pie-chart", pieChartData, {
-          title: `Distribusi Produksi Sayuran di ${
-            selectedProvince === "national" ? "Nasional" : selectedProvince
-          } (2023)`,
-          showlegend: true,
-        });
+        renderPieChart(selectedProvince);
       }
     </script>
   </body>

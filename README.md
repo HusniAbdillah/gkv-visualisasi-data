@@ -65,3 +65,8 @@ _ipb.link_
 ```
 
 ```
+## ‼️ Kesimpulan
+
+Dengan memanfaatkan library Javascript Plotly, visualisasi data Produksi Sayur di Indonesia dapat dibuat dan informasi kompleks dari data Badan Pusat Statistik dapat disajikan ke dalam bentuk visual yang informatif dan mudah dipahami. Melalui kombinasi line chart, bar chart, dan pie chart, visualisasi yang dihasilkan mampu menunjukkan tren produksi secara jelas antar waktu dan wilayah, menyediakan perbandingan visual antar provinsi dan jenis komoditas, dan juga menyajikan hasil analisis distribusi dan proporsi produksi dalam skala nasional maupun daerah.
+
+Penggunaan Plotly juga memungkinkan penyajian data dalam bentuk grafik yang dinamis, responsif, dan mudah dieksplorasi oleh pengguna. Kelebihan Plotly seperti fitur hover, zoom, dan filtering membuat interaksi pengguna terhadap data menjadi lebih intuitif dan menarik. Visualisasi ini tidak hanya memperjelas pola yang tersembunyi dalam data, tetapi juga meningkatkan pengalaman pengguna dalam memahami informasi yang kompleks. Secara keseluruhan, proyek ini menunjukkan bahwa integrasi data statistik dengan visualisasi interaktif berbasis Plotly dapat menjadi alat bantu yang sangat efektif dalam menyampaikan insight dan mendukung pengambilan keputusan berbasis data.

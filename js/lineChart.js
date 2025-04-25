@@ -9,14 +9,14 @@ const dataBawangMerah = [
   },
   {
     x: tahun,
-    y: [556.510	, 479.091, 564.255, 556.510, 479.091],
+    y: [556.510, 479.091, 564.255, 556.510, 479.091],
     name: 'Jawa Tengah',
     mode: 'markers+lines',
     type: 'scatter'
   },
   {
     x: tahun,
-    y: [201.155, 212.618, 222.620, 201.155, 212.618],  
+    y: [201.155, 212.618, 222.620, 201.155, 212.618],
     name: 'Nusa Tenggara Barat',
     mode: 'lines+markers',
     type: 'scatter'
@@ -30,7 +30,7 @@ const dataBawangMerah = [
   },
   {
     x: tahun,
-    y: [101.762, 124.381, 183.210, 175.160, 201.421	],
+    y: [101.762, 124.381, 183.210, 175.160, 201.421],
     name: 'Sulawesi Selatan',
     mode: 'lines+markers',
     type: 'scatter'
@@ -75,16 +75,19 @@ const dataCabeRawit = [
 ];
 const layoutBawangMerah = {
   title: 'Tren Produksi Bawang Merah per Provinsi di Indonesia (2019–2023)',
-  xaxis: { title: 'Tahun' },
-  yaxis: { title: 'Produksi (ribu ton)' },
-  legend: { title: { text: 'Provinsi' } }
+  xaxis: {title: 'Tahun'},
+  yaxis: {title: 'Produksi (ribu ton)'},
+  legend: {title: {text: 'Provinsi'}}
 };
 const layoutCabeRawit = {
   title: 'Tren Produksi Cabe Rawit per Provinsi di Indonesia (2019–2023)',
-  xaxis: { title: 'Tahun' },
-  yaxis: { title: 'Produksi (ribu ton)' },
-  legend: { title: { text: 'Provinsi' } }
+  xaxis: {title: 'Tahun'},
+  yaxis: {title: 'Produksi (ribu ton)'},
+  legend: {title: {text: 'Provinsi'}}
 };
-const config = { responsive: true };
-Plotly.newPlot('linechart-bawang-merah', dataBawangMerah, layoutBawangMerah, config);
+const config = {
+  responsive: true
+};
+Plotly.newPlot(
+    'linechart-bawang-merah', dataBawangMerah, layoutBawangMerah, config);
 Plotly.newPlot('linechart-cabe-rawit', dataCabeRawit, layoutCabeRawit, config);

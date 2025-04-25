@@ -1,4 +1,4 @@
-# Visualisasi Data Produksi Tanaman Sayuran per Provinsi di Indonesia
+# Visualisasi Data Produksi Sayuran per Provinsi di Indonesia
 
 ## Project Based Learning Grafika Komputer dan Visualisasi
 

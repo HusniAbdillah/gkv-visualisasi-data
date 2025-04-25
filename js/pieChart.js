@@ -1,26 +1,33 @@
 const pieTargetYear = 2023; // Tahun yang ingin divisualisasikan
-const pieData = produksiData.filter(d => d.tahun === pieTargetYear && d.provinsi !== 'INDONESIA'); // Eksklusikan "INDONESIA"
 
-// Menggabungkan semua data produksi dari seluruh provinsi
-const komoditasUnik = [...new Set(pieData.flatMap(d => d.komoditas))];
+// Ambil data dari provinsi "INDONESIA" saja
+const nasionalData = produksiData.find(d => d.tahun === pieTargetYear && d.provinsi === 'INDONESIA');
 
-// Hitung total produksi per komoditas
-const totalPerKomoditas = komoditasUnik.map(komoditas => {
-  let total = 0;
-  pieData.forEach(provinsi => {
-    const indexKomoditas = provinsi.komoditas.indexOf(komoditas);
-    if (indexKomoditas !== -1) {
-      total += provinsi.produksi[indexKomoditas];
-    }
+// Pastikan data nasional ditemukan
+if (nasionalData) {
+  const { komoditas, produksi } = nasionalData;
+
+  // Hitung total produksi
+  const totalProduksi = produksi.reduce((sum, value) => sum + value, 0);
+
+  // Buat data dengan nama komoditas, produksi, dan persentase
+  const dataKomoditas = komoditas.map((komoditas, index) => {
+    const nilaiProduksi = produksi[index];
+    const persentase = ((nilaiProduksi / totalProduksi) * 100).toFixed(2); // Format ke 2 desimal
+    return { komoditas, produksi: nilaiProduksi, persentase };
   });
-  return { komoditas, total };
-});
 
-// Buat Pie Chart menggunakan Plotly
-Plotly.newPlot("pieplot", [{
-  labels: totalPerKomoditas.map(d => d.komoditas),
-  values: totalPerKomoditas.map(d => d.total),
-  type: 'pie'
-}], {
-  title: `Proporsi Produksi Sayuran Nasional (${pieTargetYear})`
-});
+  // Buat Pie Chart menggunakan Plotly
+  Plotly.newPlot("pieplot", [{
+    labels: dataKomoditas.map(d => `${d.komoditas} (${d.persentase}%)`),
+    values: dataKomoditas.map(d => d.produksi),
+    type: 'pie'
+  }], {
+    title: `Proporsi Produksi Sayuran Nasional (${pieTargetYear})`
+  });
+
+  // Tampilkan data di konsol untuk referensi
+  console.table(dataKomoditas);
+} else {
+  console.error("Data nasional untuk tahun ini tidak ditemukan.");
+}

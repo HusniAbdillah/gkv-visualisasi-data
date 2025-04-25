@@ -10,15 +10,62 @@
 </head>
 <body>
   <h1>Visualisasi Produksi Sayuran di Indonesia</h1>
+  
+  <div class="chart-selector">
+    <label for="chart-type">Pilih Jenis Diagram:</label>
+    <select id="chart-type" onchange="updateChart()">
+      <option value="bar">Bar Chart</option>
+      <option value="line">Line Chart</option>
+      <option value="pie">Pie Chart</option>
+    </select>
+  </div>
 
-  <div id="barplot" class="chart"></div>
-  <div id="lineplot" class="chart"></div>
-  <div id="pieplot" class="chart"></div>
-  <div id="mapplot" class="chart"></div>
+  <div id="chart-container">
+    <div id="bar-chart" class="chart"></div>
+    <div id="line-chart" class="chart" style="display: none;"></div>
+    <div id="pie-chart" class="chart" style="display: none;"></div>
+  </div>
 
-  <script src="js/barChart.js"></script>
-  <script src="js/lineChart.js"></script>
-  <script src="js/pieChart.js"></script>
-  <script src="js/mapChart.js"></script>
+  <script>
+    // Fungsi untuk memperbarui chart berdasarkan pilihan pengguna
+    function updateChart() {
+      const chartType = document.getElementById("chart-type").value;
+      document.getElementById("bar-chart").style.display = chartType === "bar" ? "block" : "none";
+      document.getElementById("line-chart").style.display = chartType === "line" ? "block" : "none";
+      document.getElementById("pie-chart").style.display = chartType === "pie" ? "block" : "none";
+    }
+
+    // Mengambil data dari file produksi_sayuran.js
+    const data = produksiData; // Data asli dari file produksi_sayuran.js
+
+    // Menyiapkan data untuk setiap diagram
+    const barData = [{
+      x: data.map(item => item.provinsi),
+      y: data.map(item => item.komoditas[0]), // Contoh: Ambil data "Bawang Merah"
+      type: 'bar'
+    }];
+
+    const lineData = [{
+      x: data.map(item => item.provinsi),
+      y: data.map(item => item.komoditas[1]), // Contoh: Ambil data "Bawang Putih"
+      type: 'scatter',
+      mode: 'lines+markers'
+    }];
+
+    const pieData = [{
+      values: data.map(item => item.komoditas[2]), // Contoh: Ambil data "Bawang Daun"
+      labels: data.map(item => item.provinsi),
+      type: 'pie'
+    }];
+
+    // Render Bar Chart
+    Plotly.newPlot('bar-chart', barData);
+
+    // Render Line Chart
+    Plotly.newPlot('line-chart', lineData);
+
+    // Render Pie Chart
+    Plotly.newPlot('pie-chart', pieData);
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 //ini draft
-const barTargetYear = 2020;
+const barTargetYear = 2023;
 const barTargetKomoditas = "Cabai Merah";
 
 const barData = produksiData.filter(

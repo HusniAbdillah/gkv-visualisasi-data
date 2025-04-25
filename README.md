@@ -29,6 +29,8 @@ Visualisasi dibuat agar mudah dipahami dan dapat digunakan untuk melihat tren, p
 
 ### 📈 Line Chart
 
+![newplot (1)](https://github.com/user-attachments/assets/4de6ce28-9fa4-4367-abe5-eaf4b1bda06e)
+
 Menampilkan tren produksi salah satu komoditas sayuran di berbagai provinsi selama 5 tahun terakhir.
 
 - Mempermudah analisis pertumbuhan atau penurunan produksi antar provinsi.
@@ -36,12 +38,16 @@ Menampilkan tren produksi salah satu komoditas sayuran di berbagai provinsi sela
 
 ### 📊 Bar Chart
 
+![newplot](https://github.com/user-attachments/assets/37eac840-1d4d-47c2-a889-af5a87603c61)
+
 Distribusi produksi beberapa jenis sayuran di berbagai provinsi pada tahun tertentu.
 
 - Menggambarkan provinsi sentra produksi utama.
 - Mengungkap disparitas atau ketimpangan produksi.
 
 ### 🥧 Pie Chart
+
+![newplot (2)](https://github.com/user-attachments/assets/de3867ca-d20e-4cb6-98f1-b38b6286b31d)
 
 Proporsi jenis sayuran terhadap total produksi nasional pada satu tahun tertentu.
 

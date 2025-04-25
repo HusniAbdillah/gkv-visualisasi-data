@@ -27,45 +27,55 @@
   </div>
 
   <script>
-    // Fungsi untuk memperbarui chart berdasarkan pilihan pengguna
-    function updateChart() {
-      const chartType = document.getElementById("chart-type").value;
-      document.getElementById("bar-chart").style.display = chartType === "bar" ? "block" : "none";
-      document.getElementById("line-chart").style.display = chartType === "line" ? "block" : "none";
-      document.getElementById("pie-chart").style.display = chartType === "pie" ? "block" : "none";
+    // Validasi apakah data dari produksi_sayuran.js sudah dimuat
+    if (typeof produksiData === 'undefined') {
+      console.error("Data tidak tersedia. Pastikan file produksi_sayuran.js dimuat dengan benar.");
+    } else {
+      // Validasi sinkronisasi antara komoditas dan produksi
+      produksiData.forEach(item => {
+        console.assert(
+          item.komoditas.length === item.produksi.length,
+          `Data provinsi ${item.provinsi} tidak sinkron: ${item.komoditas.length} komoditas, ${item.produksi.length} produksi`
+        );
+      });
+
+      // Fungsi untuk memperbarui chart berdasarkan pilihan pengguna
+      function updateChart() {
+        const chartType = document.getElementById("chart-type").value;
+        document.getElementById("bar-chart").style.display = chartType === "bar" ? "block" : "none";
+        document.getElementById("line-chart").style.display = chartType === "line" ? "block" : "none";
+        document.getElementById("pie-chart").style.display = chartType === "pie" ? "block" : "none";
+      }
+
+      // Menyiapkan data untuk setiap diagram
+      const barData = [{
+        x: produksiData.map(item => item.provinsi),
+        y: produksiData.map(item => item.produksi[0]), // Produksi untuk komoditas pertama
+        type: 'bar'
+      }];
+
+      const lineData = [{
+        x: produksiData.map(item => item.provinsi),
+        y: produksiData.map(item => item.produksi[1]), // Produksi untuk komoditas kedua
+        type: 'scatter',
+        mode: 'lines+markers'
+      }];
+
+      const pieData = [{
+        values: produksiData.map(item => item.produksi.reduce((a, b) => a + b, 0)), // Total produksi semua komoditas
+        labels: produksiData.map(item => item.provinsi),
+        type: 'pie'
+      }];
+
+      // Render Bar Chart
+      Plotly.newPlot('bar-chart', barData);
+
+      // Render Line Chart
+      Plotly.newPlot('line-chart', lineData);
+
+      // Render Pie Chart
+      Plotly.newPlot('pie-chart', pieData);
     }
-
-    // Mengambil data dari file produksi_sayuran.js
-    const data = produksiData; // Data asli dari file produksi_sayuran.js
-
-    // Menyiapkan data untuk setiap diagram
-    const barData = [{
-      x: data.map(item => item.provinsi),
-      y: data.map(item => item.komoditas[0]), // Contoh: Ambil data "Bawang Merah"
-      type: 'bar'
-    }];
-
-    const lineData = [{
-      x: data.map(item => item.provinsi),
-      y: data.map(item => item.komoditas[1]), // Contoh: Ambil data "Bawang Putih"
-      type: 'scatter',
-      mode: 'lines+markers'
-    }];
-
-    const pieData = [{
-      values: data.map(item => item.komoditas[2]), // Contoh: Ambil data "Bawang Daun"
-      labels: data.map(item => item.provinsi),
-      type: 'pie'
-    }];
-
-    // Render Bar Chart
-    Plotly.newPlot('bar-chart', barData);
-
-    // Render Line Chart
-    Plotly.newPlot('line-chart', lineData);
-
-    // Render Pie Chart
-    Plotly.newPlot('pie-chart', pieData);
   </script>
 </body>
 </html>

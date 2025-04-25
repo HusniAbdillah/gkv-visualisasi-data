@@ -60,11 +60,9 @@ Diakses dari: [https://www.bps.go.id/id/statistics-table/2/NjEjMg==/produksi-tan
 ## 📽️ Rekaman Presentasi
 
 Presentasi terhadap proyek visualisasi data ini dapat diakses melalui tautan berikut:  
-_ipb.link_
 
-```
+[ipb.link](ipb.link)
 
-```
 ## ‼️ Kesimpulan
 
 Dengan memanfaatkan library Javascript Plotly, visualisasi data Produksi Sayur di Indonesia dapat dibuat dan informasi kompleks dari data Badan Pusat Statistik dapat disajikan ke dalam bentuk visual yang informatif dan mudah dipahami. Melalui kombinasi _line chart, bar chart,_ dan _pie chart,_ visualisasi yang dihasilkan mampu menunjukkan tren produksi secara jelas antar waktu dan wilayah, menyediakan perbandingan visual antar provinsi dan jenis komoditas, dan juga menyajikan hasil analisis distribusi dan proporsi produksi dalam skala nasional maupun daerah.

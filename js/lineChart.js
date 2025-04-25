@@ -73,21 +73,45 @@ const dataCabeRawit = [
     type: 'scatter'
   }
 ];
+
 const layoutBawangMerah = {
-  title: 'Tren Produksi Bawang Merah per Provinsi di Indonesia (2019–2023)',
+  title: '',
   xaxis: {title: 'Tahun'},
   yaxis: {title: 'Produksi (ribu ton)'},
-  legend: {title: {text: 'Provinsi'}}
+  legend: {title: {text: 'Provinsi'}},
+  margin: {l: 60, r: 30, b: 50, t: 20, pad: 4},
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)'
 };
+
 const layoutCabeRawit = {
-  title: 'Tren Produksi Cabe Rawit per Provinsi di Indonesia (2019–2023)',
+  title: '',
   xaxis: {title: 'Tahun'},
   yaxis: {title: 'Produksi (ribu ton)'},
-  legend: {title: {text: 'Provinsi'}}
+  legend: {title: {text: 'Provinsi'}},
+  margin: {l: 60, r: 30, b: 50, t: 20, pad: 4},
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)'
 };
+
 const config = {
-  responsive: true
+  responsive: true,
+  displayModeBar: true,
+  modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+  displaylogo: false
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  const vegetableType = document.getElementById('vegetable-type').value;
+  if (vegetableType === 'cabe_rawit') {
+    document.getElementById('chart-title').innerText =
+        'Tren Produksi Cabe Rawit per Provinsi di Indonesia (2019–2023)';
+  } else {
+    document.getElementById('chart-title').innerText =
+        'Tren Produksi Bawang Merah per Provinsi di Indonesia (2019–2023)';
+  }
+});
+
 Plotly.newPlot(
     'linechart-bawang-merah', dataBawangMerah, layoutBawangMerah, config);
 Plotly.newPlot('linechart-cabe-rawit', dataCabeRawit, layoutCabeRawit, config);

@@ -6,193 +6,287 @@
     <title>Visualisasi Produksi Sayuran per Provinsi di Indonesia</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
       <h1>Visualisasi Produksi Sayuran per Provinsi di Indonesia</h1>
 
-      <div class="chart-selector">
-        <label for="chart-type">Pilih Jenis Diagram:</label>
-        <select id="chart-type" onchange="updateChart()">
-          <option value="bar">Bar Chart</option>
-          <option value="line" selected>Line Chart</option>
-          <!-- Set default ke Line Chart -->
-          <option value="pie">Pie Chart</option>
-        </select>
-      </div>
+      <div class="control-panel">
+        <div class="chart-selector">
+          <label for="chart-type"
+            ><i class="fas fa-chart-bar"></i> Jenis Diagram</label
+          >
+          <select id="chart-type" onchange="updateChart()">
+            <option value="line" selected>Line Chart</option>
+            <option value="bar">Bar Chart</option>
+            <option value="pie">Pie Chart</option>
+          </select>
+        </div>
 
-      <div id="line-selector" class="line-selector" style="display: block">
-        <label for="vegetable-type">Pilih Sayuran:</label>
-        <select id="vegetable-type" onchange="updateLineChart()">
-          <option value="cabe_rawit">Cabe Rawit</option>
-          <option value="bawang_merah">Bawang Merah</option>
-        </select>
-        <h2 id="line-chart-title" style="display: none"></h2>
-      </div>
+        <div id="line-selector" class="line-selector">
+          <label for="vegetable-type"
+            ><i class="fas fa-seedling"></i> Pilih Sayuran</label
+          >
+          <select id="vegetable-type" onchange="updateLineChart()">
+            <option value="cabe_rawit">Cabe Rawit</option>
+            <option value="bawang_merah">Bawang Merah</option>
+          </select>
+        </div>
 
-      <div id="pie-selector" class="pie-selector" style="display: none">
-        <label for="province-select">Pilih Provinsi:</label>
-        <select id="province-select" onchange="updatePieChart()">
-          <option value="national">Nasional</option>
-          <option value="ACEH">Aceh</option>
-          <option value="SUMATERA UTARA">Sumatera Utara</option>
-          <option value="SUMATERA BARAT">Sumatera Barat</option>
-          <option value="RIAU">Riau</option>
-          <option value="JAMBI">Jambi</option>
-          <option value="SUMATERA SELATAN">Sumatera Selatan</option>
-          <option value="BENGKULU">Bengkulu</option>
-          <option value="LAMPUNG">Lampung</option>
-          <option value="KEP. BANGKA BELITUNG">Kep. Bangka Belitung</option>
-          <option value="KEP. RIAU">Kep. Riau</option>
-          <option value="DKI JAKARTA">DKI Jakarta</option>
-          <option value="JAWA BARAT">Jawa Barat</option>
-          <option value="JAWA TENGAH">Jawa Tengah</option>
-          <option value="DI YOGYAKARTA">DI Yogyakarta</option>
-          <option value="JAWA TIMUR">Jawa Timur</option>
-          <option value="BANTEN">Banten</option>
-          <option value="BALI">Bali</option>
-          <option value="NUSA TENGGARA BARAT">Nusa Tenggara Barat</option>
-          <option value="NUSA TENGGARA TIMUR">Nusa Tenggara Timur</option>
-          <option value="KALIMANTAN BARAT">Kalimantan Barat</option>
-          <option value="KALIMANTAN TENGAH">Kalimantan Tengah</option>
-          <option value="KALIMANTAN SELATAN">Kalimantan Selatan</option>
-          <option value="KALIMANTAN TIMUR">Kalimantan Timur</option>
-          <option value="KALIMANTAN UTARA">Kalimantan Utara</option>
-          <option value="SULAWESI UTARA">Sulawesi Utara</option>
-          <option value="SULAWESI TENGAH">Sulawesi Tengah</option>
-          <option value="SULAWESI SELATAN">Sulawesi Selatan</option>
-          <option value="SULAWESI TENGGARA">Sulawesi Tenggara</option>
-          <option value="GORONTALO">Gorontalo</option>
-          <option value="SULAWESI BARAT">Sulawesi Barat</option>
-          <option value="MALUKU">Maluku</option>
-          <option value="MALUKU UTARA">Maluku Utara</option>
-          <option value="PAPUA BARAT">Papua Barat</option>
-          <option value="PAPUA">Papua</option>
-        </select>
+        <div id="bar-selector" class="bar-selector" style="display: none">
+          <label
+            ><i class="fas fa-map-marker-alt"></i> Pilih Provinsi (maksimal
+            7)</label
+          >
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="jawa-barat"
+                value="JAWA BARAT"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="jawa-barat">Jawa Barat</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="jawa-tengah"
+                value="JAWA TENGAH"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="jawa-tengah">Jawa Tengah</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="jawa-timur"
+                value="JAWA TIMUR"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="jawa-timur">Jawa Timur</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="sumatera-utara"
+                value="SUMATERA UTARA"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="sumatera-utara">Sumatera Utara</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="sumatera-barat"
+                value="SUMATERA BARAT"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="sumatera-barat">Sumatera Barat</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="aceh"
+                value="ACEH"
+                onchange="updateBarChart()"
+              />
+              <label for="aceh">Aceh</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="riau"
+                value="RIAU"
+                onchange="updateBarChart()"
+              />
+              <label for="riau">Riau</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="jambi"
+                value="JAMBI"
+                onchange="updateBarChart()"
+              />
+              <label for="jambi">Jambi</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="sumatera-selatan"
+                value="SUMATERA SELATAN"
+                onchange="updateBarChart()"
+              />
+              <label for="sumatera-selatan">Sumatera Selatan</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="bengkulu"
+                value="BENGKULU"
+                onchange="updateBarChart()"
+              />
+              <label for="bengkulu">Bengkulu</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="lampung"
+                value="LAMPUNG"
+                onchange="updateBarChart()"
+              />
+              <label for="lampung">Lampung</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="bangka-belitung"
+                value="KEP. BANGKA BELITUNG"
+                onchange="updateBarChart()"
+              />
+              <label for="bangka-belitung">Kep. Bangka Belitung</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="kep-riau"
+                value="KEP. RIAU"
+                onchange="updateBarChart()"
+              />
+              <label for="kep-riau">Kep. Riau</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="dki-jakarta"
+                value="DKI JAKARTA"
+                onchange="updateBarChart()"
+              />
+              <label for="dki-jakarta">DKI Jakarta</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="di-yogyakarta"
+                value="DI YOGYAKARTA"
+                onchange="updateBarChart()"
+              />
+              <label for="di-yogyakarta">DI Yogyakarta</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="banten"
+                value="BANTEN"
+                onchange="updateBarChart()"
+              />
+              <label for="banten">Banten</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="bali"
+                value="BALI"
+                onchange="updateBarChart()"
+              />
+              <label for="bali">Bali</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="ntb"
+                value="NUSA TENGGARA BARAT"
+                onchange="updateBarChart()"
+              />
+              <label for="ntb">Nusa Tenggara Barat</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="ntt"
+                value="NUSA TENGGARA TIMUR"
+                onchange="updateBarChart()"
+              />
+              <label for="ntt">Nusa Tenggara Timur</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="pie-selector" class="pie-selector" style="display: none">
+          <label for="province-select"
+            ><i class="fas fa-map-marker-alt"></i> Pilih Provinsi</label
+          >
+          <select id="province-select" onchange="updatePieChart()">
+            <option value="national">Nasional</option>
+            <option value="ACEH">Aceh</option>
+            <option value="SUMATERA UTARA">Sumatera Utara</option>
+            <option value="SUMATERA BARAT">Sumatera Barat</option>
+            <option value="RIAU">Riau</option>
+            <option value="JAMBI">Jambi</option>
+            <option value="SUMATERA SELATAN">Sumatera Selatan</option>
+            <option value="BENGKULU">Bengkulu</option>
+            <option value="LAMPUNG">Lampung</option>
+            <option value="KEP. BANGKA BELITUNG">Kep. Bangka Belitung</option>
+            <option value="KEP. RIAU">Kep. Riau</option>
+            <option value="DKI JAKARTA">DKI Jakarta</option>
+            <option value="JAWA BARAT">Jawa Barat</option>
+            <option value="JAWA TENGAH">Jawa Tengah</option>
+            <option value="DI YOGYAKARTA">DI Yogyakarta</option>
+            <option value="JAWA TIMUR">Jawa Timur</option>
+            <option value="BANTEN">Banten</option>
+            <option value="BALI">Bali</option>
+            <option value="NUSA TENGGARA BARAT">Nusa Tenggara Barat</option>
+            <option value="NUSA TENGGARA TIMUR">Nusa Tenggara Timur</option>
+            <option value="KALIMANTAN BARAT">Kalimantan Barat</option>
+            <option value="KALIMANTAN TENGAH">Kalimantan Tengah</option>
+            <option value="KALIMANTAN SELATAN">Kalimantan Selatan</option>
+            <option value="KALIMANTAN TIMUR">Kalimantan Timur</option>
+            <option value="KALIMANTAN UTARA">Kalimantan Utara</option>
+            <option value="SULAWESI UTARA">Sulawesi Utara</option>
+            <option value="SULAWESI TENGAH">Sulawesi Tengah</option>
+            <option value="SULAWESI SELATAN">Sulawesi Selatan</option>
+            <option value="SULAWESI TENGGARA">Sulawesi Tenggara</option>
+            <option value="GORONTALO">Gorontalo</option>
+            <option value="SULAWESI BARAT">Sulawesi Barat</option>
+            <option value="MALUKU">Maluku</option>
+            <option value="MALUKU UTARA">Maluku Utara</option>
+            <option value="PAPUA BARAT">Papua Barat</option>
+            <option value="PAPUA">Papua</option>
+          </select>
+        </div>
       </div>
 
       <div id="chart-container">
-        <div
-          id="bar-chart"
-          class="chart"
-          style="width: 100%; height: 400px; display: none"
-        ></div>
-        <div id="line-chart" class="chart" style="width: 100%; height: 400px">
+        <h2 id="chart-title"></h2>
+        <div id="bar-chart" class="chart" style="display: none"></div>
+        <div id="line-chart" class="chart">
           <div
             id="linechart-bawang-merah"
-            style="width: 100%; height: 400px; display: none"
+            style="width: 100%; height: 100%; display: none"
           ></div>
           <div
             id="linechart-cabe-rawit"
-            style="width: 100%; height: 400px"
+            style="width: 100%; height: 100%"
           ></div>
         </div>
-        <div
-          id="pie-chart"
-          class="chart"
-          style="display: none; width: 100%; height: 400px"
-        ></div>
+        <div id="pie-chart" class="chart" style="display: none"></div>
       </div>
     </div>
 
     <script src="data/produksi_sayuran.js"></script>
+    <script src="js/lineChart.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/pieChart.js"></script>
-    <script src="js/lineChart.js"></script>
-    <script>
-      // Fungsi untuk memperbarui chart berdasarkan pilihan pengguna
-      function updateChart() {
-        const chartType = document.getElementById("chart-type").value;
-        document.getElementById("bar-chart").style.display =
-          chartType === "bar" ? "block" : "none";
-        document.getElementById("line-chart").style.display =
-          chartType === "line" ? "block" : "none";
-        document.getElementById("pie-chart").style.display =
-          chartType === "pie" ? "block" : "none";
-
-        document.getElementById("line-selector").style.display =
-          chartType === "line" ? "block" : "none";
-        document.getElementById("pie-selector").style.display =
-          chartType === "pie" ? "block" : "none";
-
-        if (chartType === "pie") {
-          updatePieChart();
-        } else if (chartType === "line") {
-          updateLineChart();
-        } else {
-          updateBarChart();
-        }
-      }
-
-      // Fungsi untuk memperbarui Line Chart berdasarkan pilihan sayuran
-      function updateLineChart() {
-        const vegetableType = document.getElementById("vegetable-type").value;
-        let lineData, title;
-
-        if (vegetableType === "cabe_rawit") {
-          lineData = dataCabeRawit;
-          title =
-            "Tren Produksi Cabe Rawit per Provinsi di Indonesia (2019–2023)";
-          document.getElementById("linechart-cabe-rawit").style.display =
-            "block";
-          document.getElementById("linechart-bawang-merah").style.display =
-            "none";
-        } else if (vegetableType === "bawang_merah") {
-          lineData = dataBawangMerah;
-          title =
-            "Tren Produksi Bawang Merah per Provinsi di Indonesia (2019–2023)";
-          document.getElementById("linechart-bawang-merah").style.display =
-            "block";
-          document.getElementById("linechart-cabe-rawit").style.display =
-            "none";
-        }
-
-        // Menampilkan judul
-        document.getElementById("line-chart-title").innerText = title;
-        document.getElementById("line-chart-title").style.display = "block";
-
-        // Render Line Chart
-        Plotly.newPlot(
-          vegetableType === "cabe_rawit"
-            ? "linechart-cabe-rawit"
-            : "linechart-bawang-merah",
-          lineData,
-          vegetableType === "cabe_rawit" ? layoutCabeRawit : layoutBawangMerah,
-          config
-        );
-      }
-      function updatePieChart() {
-        const selectedProvince =
-          document.getElementById("province-select").value;
-        renderPieChart(selectedProvince);
-      }
-      function populateProvinceDropdown() {
-        const provinceSelect = document.getElementById("province-select");
-        provinceSelect.innerHTML = '<option value="national">Nasional</option>'; // Tambahkan opsi nasional
-
-        // Ambil semua provinsi unik dari produksiData
-        const provinces = [...new Set(produksiData.map((d) => d.provinsi))];
-
-        // Tambahkan setiap provinsi ke dropdown
-        provinces.forEach((provinsi) => {
-          const option = document.createElement("option");
-          option.value = provinsi;
-          option.textContent = provinsi;
-          provinceSelect.appendChild(option);
-        });
-      }
-      // Panggil fungsi saat halaman dimuat
-      document.addEventListener("DOMContentLoaded", () => {
-        // Set line chart sebagai default
-        document.getElementById("chart-type").value = "line";
-        document.getElementById("line-selector").style.display = "block";
-        document.getElementById("line-chart").style.display = "block";
-        document.getElementById("bar-chart").style.display = "none";
-        document.getElementById("pie-chart").style.display = "none";
-
-        // Panggil fungsi untuk memperbarui line chart
-        updateLineChart();
-      });
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>

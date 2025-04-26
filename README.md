@@ -7,6 +7,13 @@ Topik visualisasi yang diangkat adalah **Produksi Tanaman Sayuran per Provinsi d
 
 ---
 
+## 📽️ Rekaman Presentasi
+
+Presentasi terhadap proyek visualisasi data ini dapat diakses melalui tautan berikut:  
+
+https://drive.google.com/file/d/1SGnvLvKmB_D8J8-YJ1eDx2lvRVyeAuRW/view?usp=drive_link
+
+---
 ## 👥 Anggota Kelompok
 
 | Nama                        | NIM         |
@@ -62,12 +69,6 @@ Badan Pusat Statistik. (2024). _Produksi Tanaman Sayuran_.
 Diakses dari: [https://www.bps.go.id/id/statistics-table/2/NjEjMg==/produksi-tanaman-sayuran.html](https://www.bps.go.id/id/statistics-table/2/NjEjMg==/produksi-tanaman-sayuran.html)
 
 ---
-
-## 📽️ Rekaman Presentasi
-
-Presentasi terhadap proyek visualisasi data ini dapat diakses melalui tautan berikut:  
-
-[ipb.link](ipb.link)
 
 ## ‼️ Kesimpulan
 

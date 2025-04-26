@@ -7,11 +7,11 @@ Topik visualisasi yang diangkat adalah **Produksi Tanaman Sayuran per Provinsi d
 
 ---
 
-## 📽️ Rekaman Presentasi
+## 📽️ Video + Source Code
 
-Presentasi terhadap proyek visualisasi data ini dapat diakses melalui tautan berikut:  
+Video rekaman presentasi beserta source codenya dapat di akses melalui link berikut :  
 
-https://drive.google.com/file/d/1SGnvLvKmB_D8J8-YJ1eDx2lvRVyeAuRW/view?usp=drive_link
+https://drive.google.com/drive/folders/159ZDFvzSDh0WMdYn6Ro_Hg-5kFQRKEUp?usp=sharing
 
 ---
 ## 👥 Anggota Kelompok

@@ -29,7 +29,7 @@ Visualisasi dibuat agar mudah dipahami dan dapat digunakan untuk melihat tren, p
 
 ### 📈 Line Chart
 
-![newplot (1)](https://github.com/user-attachments/assets/4de6ce28-9fa4-4367-abe5-eaf4b1bda06e)
+![newplot (3)](https://github.com/user-attachments/assets/ba1d9830-e433-4a57-9624-d7096ee3fddf)
 
 Menampilkan tren produksi salah satu komoditas sayuran di berbagai provinsi selama 5 tahun terakhir.
 

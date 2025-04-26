@@ -27,7 +27,6 @@ function renderPieChart(selectedProvince) {
       });
 
       dataKomoditas.sort((a, b) => b.produksi - a.produksi);
-
       dataKomoditas = dataKomoditas.slice(0, 7);
     } else {
       console.error('Data nasional untuk tahun ini tidak ditemukan.');
@@ -49,7 +48,6 @@ function renderPieChart(selectedProvince) {
       });
 
       dataKomoditas.sort((a, b) => b.produksi - a.produksi);
-
       dataKomoditas = dataKomoditas.slice(0, 7);
     } else {
       console.error(`Data untuk provinsi ${selectedProvince} tidak ditemukan.`);
@@ -81,6 +79,4 @@ function renderPieChart(selectedProvince) {
         modeBarButtonsToRemove: ['lasso2d', 'select2d'],
         displaylogo: false
       });
-
-  console.table(dataKomoditas);
 }

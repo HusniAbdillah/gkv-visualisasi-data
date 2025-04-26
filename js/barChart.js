@@ -183,7 +183,6 @@ function updateBarChart() {
     });
 
     alert('Maksimal 3 jenis sayuran yang dapat dipilih');
-
     updateSelectedVegetablesInfo();
   }
 
@@ -198,6 +197,14 @@ function updateBarChart() {
   });
 
   updateSelectedProvincesInfo();
+
+  if (targetKomoditas.length === 0 || targetProvinsi.length === 0) {
+    document.getElementById('bar-chart').innerHTML =
+        '<div class="no-data-message">Silahkan pilih provinsi dan jenis sayuran untuk menampilkan data</div>';
+    document.getElementById('chart-title').innerText =
+        'Tidak ada data yang dipilih';
+    return;
+  }
 
   const filteredData = produksiData.filter(
       (d) => d.tahun === targetYear && targetProvinsi.includes(d.provinsi) &&

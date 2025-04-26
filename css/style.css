@@ -451,7 +451,6 @@ h2 {
     }
 }
 
-/* Styling untuk pemilihan sayuran */
 .vegetable-selector {
     margin-top: 20px;
     width: 100%;
@@ -609,25 +608,23 @@ h2 {
     }
 }
 
-/* Styling untuk pesan tidak ada data */
 .no-data-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-  font-size: 1.2rem;
-  color: #757575;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  border: 1px dashed #e0e0e0;
-  margin: 20px 0;
-  padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    font-size: 1.2rem;
+    color: #757575;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #e0e0e0;
+    margin: 20px 0;
+    padding: 20px;
 }
 
-/* Styling untuk tombol default - ubah warna sesuai keinginan */
 .default-button {
-    background-color: #ff7d20; /* Ini adalah warna yang terlihat di gambar, Anda bisa menggantinya */
+    background-color: #ff7d20;
     color: white;
     padding: 8px 12px;
     border-radius: 6px;
@@ -636,8 +633,8 @@ h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
     transition: all 0.2s ease;
-  }
-  
-  .default-button:hover {
-    background-color: #E64A19; /* Warna yang lebih gelap untuk efek hover */
-  }
+}
+
+.default-button:hover {
+    background-color: #E64A19;
+}

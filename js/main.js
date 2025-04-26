@@ -18,7 +18,7 @@ function updateChart() {
     updatePieChart();
   } else if (chartType === 'line') {
     updateLineChart();
-  } else {
+  } else if (chartType === 'bar') {
     updateBarChart();
   }
 }

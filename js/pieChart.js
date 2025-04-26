@@ -1,11 +1,8 @@
-console.log('produksiData:', produksiData);
 const pieTargetYear = 2023;
 
 function renderPieChart(selectedProvince) {
   let dataKomoditas = [];
   let totalProduksi = 0;
-
-  console.log('Selected Province:', selectedProvince);
 
   const htmlTitle = selectedProvince === 'national' ?
       `Distribusi Produksi 7 Sayuran Teratas di Indonesia (${pieTargetYear})` :

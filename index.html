@@ -37,43 +37,46 @@
           </select>
         </div>
 
-        <div id="bar-selector" class="bar-selector" style="display: none">
-          <label
-            ><i class="fas fa-map-marker-alt"></i> Pilih Provinsi (maksimal
-            7)</label
-          >
+        <div class="bar-selector" id="bar-selector" style="display: none">
+          <label><i class="fas fa-map-marker-alt"></i> Pilih Provinsi</label>
+
+          <div class="selected-provinces" id="selected-provinces-info">
+            <span>5</span> provinsi dipilih
+          </div>
+
+          <div class="province-filter">
+            <select id="region-filter" onchange="filterProvincesByRegion()">
+              <option value="all">Semua Wilayah</option>
+              <option value="sumatera">Sumatera</option>
+              <option value="jawa">Jawa</option>
+              <option value="bali-nusa">Bali dan Nusa Tenggara</option>
+              <option value="kalimantan">Kalimantan</option>
+              <option value="sulawesi">Sulawesi</option>
+              <option value="maluku-papua">Maluku dan Papua</option>
+            </select>
+            <button id="select-all" onclick="selectAll()">Pilih Semua</button>
+            <button
+              id="default-provinces"
+              onclick="setDefaultProvinces()"
+              class="default-button"
+            >
+              Default
+            </button>
+            <button id="clear-selection" onclick="clearSelection()">
+              Hapus Pilihan
+            </button>
+          </div>
           <div class="checkbox-container">
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
-                id="jawa-barat"
-                value="JAWA BARAT"
-                checked
+                id="aceh"
+                value="ACEH"
                 onchange="updateBarChart()"
               />
-              <label for="jawa-barat">Jawa Barat</label>
+              <label for="aceh">Aceh</label>
             </div>
-            <div class="checkbox-item">
-              <input
-                type="checkbox"
-                id="jawa-tengah"
-                value="JAWA TENGAH"
-                checked
-                onchange="updateBarChart()"
-              />
-              <label for="jawa-tengah">Jawa Tengah</label>
-            </div>
-            <div class="checkbox-item">
-              <input
-                type="checkbox"
-                id="jawa-timur"
-                value="JAWA TIMUR"
-                checked
-                onchange="updateBarChart()"
-              />
-              <label for="jawa-timur">Jawa Timur</label>
-            </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="sumatera-utara"
@@ -83,7 +86,7 @@
               />
               <label for="sumatera-utara">Sumatera Utara</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="sumatera-barat"
@@ -93,16 +96,7 @@
               />
               <label for="sumatera-barat">Sumatera Barat</label>
             </div>
-            <div class="checkbox-item">
-              <input
-                type="checkbox"
-                id="aceh"
-                value="ACEH"
-                onchange="updateBarChart()"
-              />
-              <label for="aceh">Aceh</label>
-            </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="riau"
@@ -111,7 +105,7 @@
               />
               <label for="riau">Riau</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="jambi"
@@ -120,7 +114,7 @@
               />
               <label for="jambi">Jambi</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="sumatera-selatan"
@@ -129,7 +123,7 @@
               />
               <label for="sumatera-selatan">Sumatera Selatan</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="bengkulu"
@@ -138,7 +132,7 @@
               />
               <label for="bengkulu">Bengkulu</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="lampung"
@@ -147,7 +141,7 @@
               />
               <label for="lampung">Lampung</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="bangka-belitung"
@@ -156,7 +150,7 @@
               />
               <label for="bangka-belitung">Kep. Bangka Belitung</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item sumatera">
               <input
                 type="checkbox"
                 id="kep-riau"
@@ -165,7 +159,8 @@
               />
               <label for="kep-riau">Kep. Riau</label>
             </div>
-            <div class="checkbox-item">
+
+            <div class="checkbox-item jawa">
               <input
                 type="checkbox"
                 id="dki-jakarta"
@@ -174,7 +169,27 @@
               />
               <label for="dki-jakarta">DKI Jakarta</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item jawa">
+              <input
+                type="checkbox"
+                id="jawa-barat"
+                value="JAWA BARAT"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="jawa-barat">Jawa Barat</label>
+            </div>
+            <div class="checkbox-item jawa">
+              <input
+                type="checkbox"
+                id="jawa-tengah"
+                value="JAWA TENGAH"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="jawa-tengah">Jawa Tengah</label>
+            </div>
+            <div class="checkbox-item jawa">
               <input
                 type="checkbox"
                 id="di-yogyakarta"
@@ -183,7 +198,17 @@
               />
               <label for="di-yogyakarta">DI Yogyakarta</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item jawa">
+              <input
+                type="checkbox"
+                id="jawa-timur"
+                value="JAWA TIMUR"
+                checked
+                onchange="updateBarChart()"
+              />
+              <label for="jawa-timur">Jawa Timur</label>
+            </div>
+            <div class="checkbox-item jawa">
               <input
                 type="checkbox"
                 id="banten"
@@ -192,7 +217,8 @@
               />
               <label for="banten">Banten</label>
             </div>
-            <div class="checkbox-item">
+
+            <div class="checkbox-item bali-nusa">
               <input
                 type="checkbox"
                 id="bali"
@@ -201,7 +227,7 @@
               />
               <label for="bali">Bali</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item bali-nusa">
               <input
                 type="checkbox"
                 id="ntb"
@@ -210,7 +236,7 @@
               />
               <label for="ntb">Nusa Tenggara Barat</label>
             </div>
-            <div class="checkbox-item">
+            <div class="checkbox-item bali-nusa">
               <input
                 type="checkbox"
                 id="ntt"
@@ -218,6 +244,396 @@
                 onchange="updateBarChart()"
               />
               <label for="ntt">Nusa Tenggara Timur</label>
+            </div>
+
+            <div class="checkbox-item kalimantan">
+              <input
+                type="checkbox"
+                id="kalbar"
+                value="KALIMANTAN BARAT"
+                onchange="updateBarChart()"
+              />
+              <label for="kalbar">Kalimantan Barat</label>
+            </div>
+            <div class="checkbox-item kalimantan">
+              <input
+                type="checkbox"
+                id="kalteng"
+                value="KALIMANTAN TENGAH"
+                onchange="updateBarChart()"
+              />
+              <label for="kalteng">Kalimantan Tengah</label>
+            </div>
+            <div class="checkbox-item kalimantan">
+              <input
+                type="checkbox"
+                id="kalsel"
+                value="KALIMANTAN SELATAN"
+                onchange="updateBarChart()"
+              />
+              <label for="kalsel">Kalimantan Selatan</label>
+            </div>
+            <div class="checkbox-item kalimantan">
+              <input
+                type="checkbox"
+                id="kaltim"
+                value="KALIMANTAN TIMUR"
+                onchange="updateBarChart()"
+              />
+              <label for="kaltim">Kalimantan Timur</label>
+            </div>
+            <div class="checkbox-item kalimantan">
+              <input
+                type="checkbox"
+                id="kalut"
+                value="KALIMANTAN UTARA"
+                onchange="updateBarChart()"
+              />
+              <label for="kalut">Kalimantan Utara</label>
+            </div>
+
+            <div class="checkbox-item sulawesi">
+              <input
+                type="checkbox"
+                id="sulut"
+                value="SULAWESI UTARA"
+                onchange="updateBarChart()"
+              />
+              <label for="sulut">Sulawesi Utara</label>
+            </div>
+            <div class="checkbox-item sulawesi">
+              <input
+                type="checkbox"
+                id="sulteng"
+                value="SULAWESI TENGAH"
+                onchange="updateBarChart()"
+              />
+              <label for="sulteng">Sulawesi Tengah</label>
+            </div>
+            <div class="checkbox-item sulawesi">
+              <input
+                type="checkbox"
+                id="sulsel"
+                value="SULAWESI SELATAN"
+                onchange="updateBarChart()"
+              />
+              <label for="sulsel">Sulawesi Selatan</label>
+            </div>
+            <div class="checkbox-item sulawesi">
+              <input
+                type="checkbox"
+                id="sultra"
+                value="SULAWESI TENGGARA"
+                onchange="updateBarChart()"
+              />
+              <label for="sultra">Sulawesi Tenggara</label>
+            </div>
+            <div class="checkbox-item sulawesi">
+              <input
+                type="checkbox"
+                id="gorontalo"
+                value="GORONTALO"
+                onchange="updateBarChart()"
+              />
+              <label for="gorontalo">Gorontalo</label>
+            </div>
+            <div class="checkbox-item sulawesi">
+              <input
+                type="checkbox"
+                id="sulbar"
+                value="SULAWESI BARAT"
+                onchange="updateBarChart()"
+              />
+              <label for="sulbar">Sulawesi Barat</label>
+            </div>
+
+            <div class="checkbox-item maluku-papua">
+              <input
+                type="checkbox"
+                id="maluku"
+                value="MALUKU"
+                onchange="updateBarChart()"
+              />
+              <label for="maluku">Maluku</label>
+            </div>
+            <div class="checkbox-item maluku-papua">
+              <input
+                type="checkbox"
+                id="malut"
+                value="MALUKU UTARA"
+                onchange="updateBarChart()"
+              />
+              <label for="malut">Maluku Utara</label>
+            </div>
+            <div class="checkbox-item maluku-papua">
+              <input
+                type="checkbox"
+                id="papbar"
+                value="PAPUA BARAT"
+                onchange="updateBarChart()"
+              />
+              <label for="papbar">Papua Barat</label>
+            </div>
+            <div class="checkbox-item maluku-papua">
+              <input
+                type="checkbox"
+                id="papua"
+                value="PAPUA"
+                onchange="updateBarChart()"
+              />
+              <label for="papua">Papua</label>
+            </div>
+          </div>
+          <div class="vegetable-selector">
+            <label
+              ><i class="fas fa-seedling"></i> Pilih Jenis Sayuran (maksimum
+              3)</label
+            >
+
+            <div class="selected-vegetables" id="selected-vegetables-info">
+              <span>3</span> dari 3 sayuran dipilih
+            </div>
+
+            <div class="vegetable-filter">
+              <select
+                id="vegetable-category"
+                onchange="filterVegetablesByCategory()"
+              >
+                <option value="all">Semua Kategori</option>
+                <option value="umbi">Umbi-umbian</option>
+                <option value="daun">Sayuran Daun</option>
+                <option value="buah">Sayuran Buah</option>
+                <option value="lain">Lainnya</option>
+              </select>
+              <button
+                id="default-vegetables"
+                onclick="setDefaultVegetables()"
+                class="default-button"
+              >
+                Default
+              </button>
+              <button
+                id="clear-vegetable-selection"
+                onclick="clearVegetableSelection()"
+              >
+                Hapus Pilihan
+              </button>
+            </div>
+
+            <div class="vegetable-checkbox-container">
+              <div class="vegetable-checkbox-item umbi">
+                <input
+                  type="checkbox"
+                  id="bawang-merah"
+                  value="Bawang Merah"
+                  checked
+                  onchange="updateBarChart()"
+                />
+                <label for="bawang-merah">Bawang Merah</label>
+              </div>
+              <div class="vegetable-checkbox-item umbi">
+                <input
+                  type="checkbox"
+                  id="bawang-putih"
+                  value="Bawang Putih"
+                  onchange="updateBarChart()"
+                />
+                <label for="bawang-putih">Bawang Putih</label>
+              </div>
+              <div class="vegetable-checkbox-item umbi">
+                <input
+                  type="checkbox"
+                  id="kentang"
+                  value="Kentang"
+                  onchange="updateBarChart()"
+                />
+                <label for="kentang">Kentang</label>
+              </div>
+              <div class="vegetable-checkbox-item umbi">
+                <input
+                  type="checkbox"
+                  id="wortel"
+                  value="Wortel"
+                  onchange="updateBarChart()"
+                />
+                <label for="wortel">Wortel</label>
+              </div>
+
+              <div class="vegetable-checkbox-item daun">
+                <input
+                  type="checkbox"
+                  id="bawang-daun"
+                  value="Bawang Daun"
+                  onchange="updateBarChart()"
+                />
+                <label for="bawang-daun">Bawang Daun</label>
+              </div>
+              <div class="vegetable-checkbox-item daun">
+                <input
+                  type="checkbox"
+                  id="kubis"
+                  value="Kubis"
+                  onchange="updateBarChart()"
+                />
+                <label for="kubis">Kubis</label>
+              </div>
+              <div class="vegetable-checkbox-item daun">
+                <input
+                  type="checkbox"
+                  id="kembang-kol"
+                  value="Kembang Kol"
+                  onchange="updateBarChart()"
+                />
+                <label for="kembang-kol">Kembang Kol</label>
+              </div>
+              <div class="vegetable-checkbox-item daun">
+                <input
+                  type="checkbox"
+                  id="petsai-sawi"
+                  value="Petsai/Sawi"
+                  onchange="updateBarChart()"
+                />
+                <label for="petsai-sawi">Petsai/Sawi</label>
+              </div>
+              <div class="vegetable-checkbox-item daun">
+                <input
+                  type="checkbox"
+                  id="kangkung"
+                  value="Kangkung"
+                  onchange="updateBarChart()"
+                />
+                <label for="kangkung">Kangkung</label>
+              </div>
+              <div class="vegetable-checkbox-item daun">
+                <input
+                  type="checkbox"
+                  id="bayam"
+                  value="Bayam"
+                  onchange="updateBarChart()"
+                />
+                <label for="bayam">Bayam</label>
+              </div>
+
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="cabai-besar"
+                  value="Cabai Besar"
+                  onchange="updateBarChart()"
+                />
+                <label for="cabai-besar">Cabai Besar</label>
+              </div>
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="cabai-rawit"
+                  value="Cabai Rawit"
+                  checked
+                  onchange="updateBarChart()"
+                />
+                <label for="cabai-rawit">Cabai Rawit</label>
+              </div>
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="tomat"
+                  value="Tomat"
+                  checked
+                  onchange="updateBarChart()"
+                />
+                <label for="tomat">Tomat</label>
+              </div>
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="terung"
+                  value="Terung"
+                  onchange="updateBarChart()"
+                />
+                <label for="terung">Terung</label>
+              </div>
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="ketimun"
+                  value="Ketimun"
+                  onchange="updateBarChart()"
+                />
+                <label for="ketimun">Ketimun</label>
+              </div>
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="labu-siam"
+                  value="Labu Siam"
+                  onchange="updateBarChart()"
+                />
+                <label for="labu-siam">Labu Siam</label>
+              </div>
+              <div class="vegetable-checkbox-item buah">
+                <input
+                  type="checkbox"
+                  id="paprika"
+                  value="Paprika"
+                  onchange="updateBarChart()"
+                />
+                <label for="paprika">Paprika</label>
+              </div>
+
+              <div class="vegetable-checkbox-item lain">
+                <input
+                  type="checkbox"
+                  id="kacang-panjang"
+                  value="Kacang Panjang"
+                  onchange="updateBarChart()"
+                />
+                <label for="kacang-panjang">Kacang Panjang</label>
+              </div>
+              <div class="vegetable-checkbox-item lain">
+                <input
+                  type="checkbox"
+                  id="buncis"
+                  value="Buncis"
+                  onchange="updateBarChart()"
+                />
+                <label for="buncis">Buncis</label>
+              </div>
+              <div class="vegetable-checkbox-item lain">
+                <input
+                  type="checkbox"
+                  id="melinjo"
+                  value="Melinjo"
+                  onchange="updateBarChart()"
+                />
+                <label for="melinjo">Melinjo</label>
+              </div>
+              <div class="vegetable-checkbox-item lain">
+                <input
+                  type="checkbox"
+                  id="jamur"
+                  value="Jamur"
+                  onchange="updateBarChart()"
+                />
+                <label for="jamur">Jamur</label>
+              </div>
+              <div class="vegetable-checkbox-item lain">
+                <input
+                  type="checkbox"
+                  id="petai"
+                  value="Petai"
+                  onchange="updateBarChart()"
+                />
+                <label for="petai">Petai</label>
+              </div>
+              <div class="vegetable-checkbox-item lain">
+                <input
+                  type="checkbox"
+                  id="jengkol"
+                  value="Jengkol"
+                  onchange="updateBarChart()"
+                />
+                <label for="jengkol">Jengkol</label>
+              </div>
             </div>
           </div>
         </div>

@@ -13,6 +13,8 @@ Video rekaman presentasi beserta source codenya dapat di akses melalui link beri
 
 [https://ipb.link/visualisasi-data-produksi-sayuran](https://ipb.link/visualisasi-data-produksi-sayuran)
 
+*Notes: video ini memiliki kesalahan penyebutan asal paralel, seharusnnya kami berasal dari paralel 3
+
 ---
 ## 👥 Anggota Kelompok
 

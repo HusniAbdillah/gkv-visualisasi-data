@@ -2,7 +2,7 @@
 
 ## Project Based Learning Grafika Komputer dan Visualisasi
 
-Proyek akhir mata kuliah **Grafika Komputer dan Visualisasi (KOM1304)** TA 2024/2025 oleh **Kelompok 3 Paralel 2**.  
+Proyek akhir mata kuliah **Grafika Komputer dan Visualisasi (KOM1304)** TA 2024/2025 oleh **Kelompok 3 Paralel 3**.  
 Topik visualisasi yang diangkat adalah **Produksi Tanaman Sayuran per Provinsi di Indonesia** berdasarkan data dari Badan Pusat Statistik (BPS).
 
 ---

@@ -11,9 +11,14 @@ Topik visualisasi yang diangkat adalah **Produksi Tanaman Sayuran per Provinsi d
 
 Video rekaman presentasi beserta source codenya dapat di akses melalui link berikut :  
 
-[https://ipb.link/visualisasi-data-produksi-sayuran](https://ipb.link/visualisasi-data-produksi-sayuran)
+[ipb.link/visualisasi-data-produksi-sayuran](https://ipb.link/visualisasi-data-produksi-sayuran)
 
-*Notes: video ini memiliki kesalahan penyebutan asal paralel, seharusnnya kami berasal dari paralel 3
+*Notes: video ini memiliki kesalahan penyebutan asal paralel, seharusnnya kami berasal dari paralel 3.
+
+## 🌐 Website Proyek
+
+Website hasil dari proyek ini dapat diakses melalui tautan berikut:
+[visualisasi-produksi-sayuran.netlify.app/](https://visualisasi-produksi-sayuran.netlify.app/)
 
 ---
 ## 👥 Anggota Kelompok
@@ -34,11 +39,13 @@ Visualisasi dibuat agar mudah dipahami dan dapat digunakan untuk melihat tren, p
 
 ---
 
-## 🔍 Fitur Visualisasi
+## 🔍 Visualisasi Data
+
+Proyek ini menyediakan tiga jenis laman visualisasi data untuk membantu analisis produksi sayuran berdasarkan data per provinsi di Indonesia:
 
 ### 📈 Line Chart
 
-![newplot (3)](https://github.com/user-attachments/assets/ba1d9830-e433-4a57-9624-d7096ee3fddf)
+![lineChart](img/linechart.png)
 
 Menampilkan tren produksi salah satu komoditas sayuran di berbagai provinsi selama 5 tahun terakhir.
 
@@ -47,7 +54,7 @@ Menampilkan tren produksi salah satu komoditas sayuran di berbagai provinsi sela
 
 ### 📊 Bar Chart
 
-![newplot](https://github.com/user-attachments/assets/37eac840-1d4d-47c2-a889-af5a87603c61)
+![barChart](img/barchart.png)
 
 Distribusi produksi beberapa jenis sayuran di berbagai provinsi pada tahun tertentu.
 
@@ -56,7 +63,7 @@ Distribusi produksi beberapa jenis sayuran di berbagai provinsi pada tahun terte
 
 ### 🥧 Pie Chart
 
-![newplot (2)](https://github.com/user-attachments/assets/de3867ca-d20e-4cb6-98f1-b38b6286b31d)
+![pieChart](img/piechart.png)
 
 Proporsi jenis sayuran terhadap total produksi nasional pada satu tahun tertentu.
 
@@ -64,6 +71,27 @@ Proporsi jenis sayuran terhadap total produksi nasional pada satu tahun tertentu
 - Membandingkan dengan komposisi produksi per provinsi.
 
 ---
+## 🖼️ Tampilan Laman Website
+
+Berikut adalah contoh tangkapan layar dari masing-masing laman:
+
+### 📈 Halaman Line Chart
+
+<div align="center">
+  <img src="img/laman-linechart.png" alt="Tampilan Halaman Line Chart" width="800px">
+</div>
+
+### 📊 Halaman Bar Chart
+
+<div align="center">
+  <img src="img/laman-barchart.png" alt="Tampilan Halaman Bar Chart" width="800px">
+</div>
+
+### 🥧 Halaman Pie Chart
+
+<div align="center">
+  <img src="img/laman-piechart.png" alt="Tampilan Halaman Pie Chart" width="800px">
+</div>
 
 ## 📂 Sumber Data
 

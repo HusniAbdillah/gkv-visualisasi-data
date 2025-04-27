@@ -78,19 +78,19 @@ Berikut adalah contoh tangkapan layar dari masing-masing laman:
 ### 📈 Halaman Line Chart
 
 <div align="center">
-  <img src="img/laman-linechart.png" alt="Tampilan Halaman Line Chart" width="800px">
+  <img src="img/laman-linechart.png" alt="Tampilan Halaman Line Chart" width="700px">
 </div>
 
 ### 📊 Halaman Bar Chart
 
 <div align="center">
-  <img src="img/laman-barchart.png" alt="Tampilan Halaman Bar Chart" width="800px">
+  <img src="img/laman-barchart.png" alt="Tampilan Halaman Bar Chart" width="700px">
 </div>
 
 ### 🥧 Halaman Pie Chart
 
 <div align="center">
-  <img src="img/laman-piechart.png" alt="Tampilan Halaman Pie Chart" width="800px">
+  <img src="img/laman-piechart.png" alt="Tampilan Halaman Pie Chart" width="700px">
 </div>
 
 ## 📂 Sumber Data
